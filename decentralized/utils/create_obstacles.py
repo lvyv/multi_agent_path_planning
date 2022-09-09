@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def create_obstacles(sim_time, num_timesteps):
     # Obstacle 1
     v = -2

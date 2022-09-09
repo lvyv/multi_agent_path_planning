@@ -13,6 +13,7 @@ import yaml
 from math import fabs
 from graph_generation import SippGraph, State
 
+
 class SippPlanner(SippGraph):
     def __init__(self, map, agent_id):
         SippGraph.__init__(self, map)
@@ -20,6 +21,7 @@ class SippPlanner(SippGraph):
         self.goal = tuple(map["agents"][agent_id]["goal"])
         self.name = map["agents"][agent_id]["name"]
         self.open = []
+        self.plan = []
 
     def get_successors(self, state):
         successors = []
@@ -75,7 +77,7 @@ class SippPlanner(SippGraph):
 
         # Tracking back
         start_reached = False
-        self.plan = []
+        # self.plan = []
         current = successor
         while not start_reached:
             self.plan.insert(0,current)
