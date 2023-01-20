@@ -14,6 +14,9 @@ $ pip install -r requirements.txt
 $ cd centralized\cbs
 $ python cbs.py ..\benchmark\8x8_obst12\map_8by8_obst12_agents9_ex0.yaml output.yaml
 $ python ..\visualize.py  ..\benchmark\8x8_obst12\map_8by8_obst12_agents9_ex0.yaml output.yaml
+
+$ python cbs.py ..\benchmark\32x32_obst204\map_32by32_obst204_agents10_ex0.yaml output.yaml
+$ python ..\visualize.py ..\benchmark\32x32_obst204\map_32by32_obst204_agents10_ex0.yaml output.yaml
 ```
 3.局部规划
 ```

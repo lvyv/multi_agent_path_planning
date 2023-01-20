@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import yaml
-import matplotlib
+# import matplotlib
 # matplotlib.use("Agg")
 from matplotlib.patches import Circle, Rectangle, Arrow
 from matplotlib.collections import PatchCollection
@@ -81,8 +81,8 @@ class Animation:
 
         self.anim = animation.FuncAnimation(self.fig, self.animate_func,
                                             init_func=self.init_func,
-                                            frames=int(self.T + 1) * 10,
-                                            interval=50,
+                                            frames=int(self.T + 1) * 30,
+                                            interval=10,
                                             blit=True)
 
     def save(self, file_name, speed):

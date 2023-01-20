@@ -6,11 +6,13 @@ author: Ashwin Bose (@atb033)
 
 """
 import sys
-sys.path.insert(0, '../')
+
 import yaml
 import argparse
 
 from cbs.cbs import Location
+sys.path.insert(0, '../')
+
 
 class Vertex:
     def __init__(self, agent, location, time):
@@ -18,23 +20,30 @@ class Vertex:
         self.location = location
         self.time = time
         self.cost = 0
+
     def __str__(self):
-        return str(self.agent + ' t: ' + str(self.time) + ': ' + str(self.location)  )
+        return str(self.agent + ' t: ' + str(self.time) + ': ' + str(self.location))
+
     def __eq__(self, other):
         return self.agent == other.agent and self.location == other.location and self.time == other.time
+
     def __hash__(self):
         return hash(str(self.agent)+str(self.location) + str(self.time))
+
 
 class Edge:
     def __init__(self, vertex_a, vertex_b):
         self.vertex_a = vertex_a
         self.vertex_b = vertex_b
         self.edge_length = self.compute_edge_length()
+
     def __str__(self):
-        return str(self.vertex_a)  + ', ' + str(self.vertex_b)
+        return str(self.vertex_a)+ ', ' + str(self.vertex_b)
+
     def compute_edge_length(self):
-        return ((self.vertex_a.location.x - self.vertex_b.location.x ) ** 2 + \
-            (self.vertex_a.location.y - self.vertex_b.location.y ) ** 2) ** 0.5
+        return ((self.vertex_a.location.x - self.vertex_b.location.x) ** 2 + (self.vertex_a.location.y -
+                                                                              self.vertex_b.location.y) ** 2) ** 0.5
+
 
 class TemporalPlanGraph:
     def __init__(self, schedule):
@@ -119,7 +128,7 @@ class TemporalPlanGraph:
         for edge in self.edges_type_1:
             if side == -1:
                 if vertex == edge.vertex_b:
-                    dir = [edge.vertex_b.location.x - edge.vertex_a.location.x, \
+                    dir = [edge.vertex_b.location.x - edge.vertex_a.location.x,
                         edge.vertex_b.location.y - edge.vertex_a.location.y]
                     mag = (dir[0]**2 + dir[1] ** 2) **0.5
                     dir = [dir[0]/mag, dir[1]/mag]
@@ -132,8 +141,8 @@ class TemporalPlanGraph:
                     return new_vertex
             if side == 1:
                 if vertex == edge.vertex_a:
-                    dir = [edge.vertex_b.location.x - edge.vertex_a.location.x, \
-                        edge.vertex_b.location.y - edge.vertex_a.location.y]
+                    dir = [edge.vertex_b.location.x - edge.vertex_a.location.x,
+                           edge.vertex_b.location.y - edge.vertex_a.location.y]
                     mag = (dir[0]**2 + dir[1] ** 2) **0.5
                     dir = [dir[0]/mag, dir[1]/mag]
 
